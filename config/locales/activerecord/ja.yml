@@ -1,7 +1,6 @@
 ja:
   activerecord:
     models:
-
     attributes:
       customer:
         email: 'メールアドレス'

@@ -1,0 +1,13 @@
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+
+    order_detail:
+      product_status:
+        cannot_start: "着手不可"
+        wait_product: "製作待ち"
+        in_product: "製作中"
+        complete: "製作完了"
