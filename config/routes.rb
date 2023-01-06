@@ -1,51 +1,38 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/show'
+    resources :orders, only: [:show, :update]
   end
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    resources :order_details, only: [:update]
   end
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :genres, only: [:index, :edit, :create, :update]
   end
   namespace :admin do
-    get 'homes/top'
+    resources :items, only: [:index, :new, :show, :edit, :create, :update]
   end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
+  namespace :admin do
+    get '/' => 'homes#top'
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/index'
-    get 'orders/show'
+  scope module: :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
-  namespace :public do
-    get 'cart_items/index'
+  scope module: :public do
+    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
+  scope module: :public do
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
   end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
+  scope module: :public do
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   end
-  namespace :public do
+  scope module: :public do
+    resources :items, only: [:index, :show]
+  end
+  scope module: :public do
     root to: 'homes#top'
     get '/about' => 'homes#about', as: 'about'
   end
