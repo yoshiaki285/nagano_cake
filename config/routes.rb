@@ -33,12 +33,20 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    post '/orders/confirm' => 'orders#confirm'
+    get '/orders/complete' => 'orders#complete'
   end
   scope module: :public do
     resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
   end
   scope module: :public do
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw'
   end
   scope module: :public do
     resources :items, only: [:index, :show]

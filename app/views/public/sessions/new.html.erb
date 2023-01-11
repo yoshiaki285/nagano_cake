@@ -1,19 +1,32 @@
-<h2>ログイン</h2>
-
 <%= form_with model: @customer, url: new_customer_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="container">
+    <div class="row">
+      <h2 class="bg-light mx-3 my-5">ログイン</h2>
+    </div>
+    <div class="row">
+      <h4 class="bg-light ml-5 mb-3">会員の方はこちらからログイン</h4>
+    </div>
+    <div class="row">
+      <table class="table table-borderless table-sm w-auto mx-auto">
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.email_field :email, size: 50, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password, size: 50, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "ログイン", class: 'btn btn-primary mt-3' %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="row">
+      <h4 class="bg-light ml-5 mb-3">会員登録がお済みでない方</h4>
+    </div>
+    <div class="mx-auto w-50">
+      <%= render "public/shared/links" %>から新規登録を行ってください
+    </div>
   </div>
 <% end %>
-
-<%= render "public/shared/links" %>
