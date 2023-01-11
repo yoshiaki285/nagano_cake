@@ -1,4 +1,4 @@
-<%= form_with model: @customer, url: new_customer_registration_path do |f| %>
+<%= form_with model: @customer, url: customer_registration_path, method: :post do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="container">
@@ -24,7 +24,7 @@
               <td><%= f.label :last_name_kana %></td>
               <td><%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "レイワ" %></td>
               <td><%= f.label :first_name_kana %></td>
-              <td><%= f.text_field :firsts_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "タロウ" %></td>
+              <td><%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "タロウ" %></td>
             </tr>
             <tr>
               <td><%= f.label :email %></td>

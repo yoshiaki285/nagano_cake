@@ -6,13 +6,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   # def new
-  #   super
+  #   @customer = Customer.new(customer_params)
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
 
   # GET /resource/edit
   # def edit
@@ -37,6 +34,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
 
   # protected
 
