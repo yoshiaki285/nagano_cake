@@ -32,9 +32,9 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   scope module: :public do
-    resources :orders, only: [:new, :create, :index, :show]
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/complete' => 'orders#complete'
+    resources :orders, only: [:new, :create, :index, :show]
   end
   scope module: :public do
     resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -44,8 +44,8 @@ Rails.application.routes.draw do
     get '/customers/my_page' => 'customers#show'
     get '/customers/information/edit' => 'customers#edit'
     patch '/customers/information' => 'customers#update'
-    get '/customers/unsubscribe' => 'customers#unsubscribe'
-    patch '/customers/withdraw' => 'customers#withdraw'
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
   end
   scope module: :public do
     resources :items, only: [:index, :show]
