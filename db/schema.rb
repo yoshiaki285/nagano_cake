@@ -99,14 +99,13 @@ ActiveRecord::Schema.define(version: 2023_01_19_223920) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genres_id", null: false
+    t.integer "genre_id"
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genres_id"], name: "index_items_on_genres_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -140,7 +139,6 @@ ActiveRecord::Schema.define(version: 2023_01_19_223920) do
   add_foreign_key "addresses", "customers"
   add_foreign_key "cart_items", "customers"
   add_foreign_key "cart_items", "items"
-  add_foreign_key "items", "genres", column: "genres_id"
   add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "customers"
