@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
     @genres = Genre.all
+    @genre = Genre.new
   end
 
   def new
@@ -10,6 +11,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
