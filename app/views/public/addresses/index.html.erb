@@ -7,18 +7,17 @@
     <table class="table table-borderless table-sm w-auto">
       <tbody>
         <tr>
-          <td><%= f.label :postal_code %></td>
+          <th>郵便番号(ハイフンなし)</th>
           <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000" %></td>
           <td></td>
           <td></td>
         </tr>
         <tr>
-          <td><%= f.label :address %></td>
-          <td colspan="2"><%= f.text_field :address, size: 55, autofocus: true, autocomplete: "address", placeholder: "東京都町田市原町田0-0" %></td>
-          <td></td>
+          <th>住所</th>
+          <td colspan="2"><%= f.text_area :address, size: 60, autofocus: true, autocomplete: "address", placeholder: "東京都町田市原町田0-0" %></td>
         </tr>
         <tr>
-          <td class="w-30">宛名</td>
+          <th>宛名</th>
           <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子" %></td>
           <td></td>
           <td><%= f.submit "新規登録", class: 'btn btn-success' %></td>
@@ -27,9 +26,8 @@
     </table>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-md-8 offset-md-1">
-      <h4 class="bg-light m-5">商品一覧</h4>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -40,8 +38,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @addressess.each do |address| %>
-            <% if address.costomer_id == @customer.id %>
+          <% @addresses.each do |address| %>
+            <% if address.customer_id == @customer.id %>
               <tr>
                 <td><%= address.postal_code %></td>
                 <td><%= address.address %></td>
