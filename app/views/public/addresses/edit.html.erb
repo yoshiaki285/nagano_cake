@@ -1,2 +1,31 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<%= form_with model: @address, url: address_path, method: :patch do |f| %>
+  <div class="container">
+    <div class="row">
+      <h2 class="bg-light m-5">配送先編集</h2>
+    </div>
+    <div class="row">
+      <table class="table table-borderless table-sm w-auto">
+        <tbody>
+          <tr>
+            <th>郵便番号(ハイフンなし)</th>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000" %></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td colspan="3"><%= f.text_area :address, size: 60, autofocus: true, autocomplete: "address", placeholder: "東京都町田市原町田0-0" %></td>
+          </tr>
+          <tr>
+            <th>宛名</th>
+            <td><%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "令和道子" %></td>
+            <td></td>
+            <td><%= f.submit "変更内容を保存", class: 'btn btn-success' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
+
+
