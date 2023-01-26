@@ -1,13 +1,35 @@
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-8">
-      <%= image_tag "cupcakes.jpg", alt: "cupcake" %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      genre search(仮)
     </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="col-8">
+      <div class="card mb-3">
+        <div>
+          <%= image_tag "cupcakes.jpg", alt: "cupcake", width: '100%', height: '100%' %>
+        </div>
+        <div class="card-img-overlay">
+          <h4 class="card-title">ようこそ、ながのCAKEへ！</h4>
+          <h5 class="card-text">
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない方も商品の閲覧はできますが、</br>
+            購入には会員登録が必要になります。
+          </h5>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-10">
+      <div class="h2 font-weight-bold text-left">新着商品</div>
+      <div class="new-items">
+        <% @items.each do |item| %>
+          <%= image_tag item.image, size: '100x100' %>
+          <%= item.name %>
+          <%= item.price %>円
+        <% end %>
       </div>
     </div>
   </div>
