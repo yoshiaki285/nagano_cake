@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <table class="table h4 h-50">
+    <div class="col-md-2">
+      <table class="table table-bordered h4 h-50 w-100">
         <thead>
           <tr>
             <th>genre search(仮)</th>
@@ -16,27 +16,32 @@
         </tbody>
       </table>
     </div>
-    <div class="col-10">
+    <div class="col-md-10">
       <div class="h2 font-weight-bold text-left">商品一覧(全<%= Item.count %>件)</div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col"></div>
-    <div class="col-10">
-      <% @items.each do |item| %>
-      <div class="d-inline-flex flex-column">
-        <%= link_to item_path(item.id) do %>
-          <% image_tag item.image, size: '200x200' %>
-        <% end %>
-        <div class="h5 font-weight-bold"><%= item.name %></div>
-        <div class="h5 font-weight-bold">
-          <%= item.price.to_s(:delimited) %>円
+      <div class="row">
+        <div class="col">
+          <% @items.each do |item| %>
+          <div class="d-inline-flex flex-column">
+            <%= link_to item_path(item.id) do %>
+              <% image_tag item.image, size: '200x200' %>
+            <% end %>
+            <div class="font-weight-bold"><%= item.name %></div>
+            <div class="font-weight-bold">
+              <%= item.price.to_s(:delimited) %>円
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
-      <% end %>
+       <div class="row mt-5">
+        <div class="col">
+          <div class="d-flex justify-content-center">
+            <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="text-center"><%= paginate @items %></div>
 </div>
 
 
