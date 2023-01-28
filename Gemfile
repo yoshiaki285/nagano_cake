@@ -64,3 +64,5 @@ gem "enum_help"
 gem 'kaminari'
 
 gem 'bootstrap4-kaminari-views'
+
+gem 'pry-rails'
