@@ -5,16 +5,15 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.full_name
     elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:address_option])
-      @order.postal_code = ship.postal_code
-      @order.address = ship.address
-      @order.name = ship.name
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
     elsif params[:order][:address_option] == "2"
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
@@ -22,9 +21,9 @@ class Public::OrdersController < ApplicationController
     else
       render 'new'
     end
-    
+    binding.pry
     @cart_items = current_customer.cart_items.all
-      
+    
   end
 
   def complete

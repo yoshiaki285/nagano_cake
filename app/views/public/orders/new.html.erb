@@ -9,12 +9,12 @@
     </div>
     <div class="pay_method ml-5">
       <p class="mb-0">
-        <%= f.radio_button :pay_method, Order.payment_methods.key(0) %>
-        <%= f.label :pay_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+        <%= f.radio_button :pay_method, Order.pay_methods.key(0) %>
+        <%= f.label :pay_method_credit_card, Order.pay_methods_i18n[:credit_card] %>
       </p>
       <p>
-        <%= f.radio_button :pay_method, Order.payment_methods.key(1) %>
-        <%= f.label :pay_method_transfer, Order.payment_methods_i18n[:transfer] %>
+        <%= f.radio_button :pay_method, Order.pay_methods.key(1) %>
+        <%= f.label :pay_method_transfer, Order.pay_methods_i18n[:transfer] %>
       </p>
     </div>
   </div>
