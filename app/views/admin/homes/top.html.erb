@@ -15,7 +15,11 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><%= order.created_at.to_s(:datetime_jp) %></td>
+          <td>
+            <%= link_to admin_order_path(order.id),style: "color: black;" do %>
+              <%= order.created_at.to_s(:datetime_jp) %>
+            <% end %>
+          </td>
           <td><%= order.customer.full_name %></td>
           <td>
             <% total_amount = 0 %>
@@ -29,5 +33,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= paginate @orders, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
