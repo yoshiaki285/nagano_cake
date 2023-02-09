@@ -22,7 +22,7 @@
           </tr>
           <tr>
             <th>ジャンル</th>
-            <td colspan="2"><%= f.collection_select(:genre_id, @genres, :id, :name, { prompt: '--選択してください--'}) %></td>
+            <td colspan="2"><%= f.collection_select(:genre_id, @genres, :id, :name) %></td>
           </tr>
           <tr>
             <th>税抜価格</th>

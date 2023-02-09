@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row mb-2">
-    <div class="col-3">
+    <div class="col-2">
       <h4 class="bg-light">注文履歴詳細</h4>
     </div>
   </div>
@@ -27,34 +27,51 @@
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <td><%= @order.order_status_i18n %></td>
+        <td><%= f.select :order_status, Order.order_statuses.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"), k]} %></td>
         <td><%= link_to "更新", admin_order_path(order.id), class:"btn btn-success", method: :patch %></td>
       </tr>
     </table>
   </div>
   <div class="row">
-    <table class="table table-bordered">
-      <thaed class="thead-light">
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th>製作ステータス</th>
-        <th></th>
-      </thaed>
-      <tbody>
-        <%= @order.order_details.each do |order_detail| %>
-          <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.total_price %></td>
-          <td><%= order_detail.amount %></td>
+    <div class="col-7">
+      <table class="table table-bordered">
+        <thaed class="thead-light">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+          <th></th>
+        </thaed>
+        <tbody>
+          <%= @order.order_details.each do |order_detail| %>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.total_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td>
+              <% subtotal=(order_detail.total_price*order_detail.amount).to_i %>
+              <%= subtotal.to_s(:delimited) %>
+            </td>
+            <td></td>
+            <td><%= link_to "更新", admin_order_detail_path(order_detail.id), method: :patch %></td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3 offset-1">
+      <table>
+        <tr>
+          <th>商品合計</th>
           <td>
-            <% subtotal=(order_detail.total_price*order_detail.amount).to_i %>
-            <%= subtotal.to_s(:delimited) %>
+            <% item_total = @order.payment - @order.postage %>
+            <%= item_total.to_s(:delimited) %>
           </td>
-          <td><%= order_detail. %></td>
-          <td><%= link_to "更新", admin_order_detail_path(order_detail.id), method: :patch %></td>
-        <% end %>
-      </tbody>
-    </table>
+          <th>送料</th>
+          <td><%= @order.postage %></td>
+          <th>請求金額合計</th>
+          <td><%= @order.payment %></td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
