@@ -55,8 +55,8 @@
                 <% subtotal=(order_detail.total_price*order_detail.amount).to_i %>
                 <%= subtotal.to_s(:delimited) %>
               </td>
-              <%= form_with model: @order_detail, url: admin_order_detail_path(@order_detail.id), method: :patch do |f| %>
-                <td><%= f.select :product_status, OrderDetail.product_statuses.keys.map{|k| [I18n.t("enum.order_detail.product_status.#{k}"), k]} %></td>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+                <td><%= f.select :product_status, OrderDetail.product_statuses.keys.map{|k| [I18n.t("enums.order_detail.product_status.#{k}"), k]} %></td>
                 <td><%= f.submit "更新", class:"btn btn-success" %></td>
               <% end %>
             </tr>
