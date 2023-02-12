@@ -3,8 +3,10 @@
     <div class="col-3 text-center offset-md-1">
       <h4 class="bg-light m-5">商品一覧</h4>
     </div>
-    <div class="col">
-      
+    <div class="col-1 offset-md-6">
+      <%= link_to new_admin_item_path, class: 'text-dark' do %>
+        <i class="fas fa-plus fa-2x m-5"></i>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -35,6 +37,10 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-md-4 align-self-center">
       <%= paginate @items, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
