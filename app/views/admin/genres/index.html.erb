@@ -16,9 +16,11 @@
       </div>
     </div>
   <% end %>
-  <table class="table w-auto">
+  <div class="row">
+    <div class="col-4">
+      <table class="table w-100">
     <thead class="thead-light">
-      <tr>
+      <tr class="ml-3">
         <th colspan="2">ジャンル</th>
       </tr>
     </thead>
@@ -26,9 +28,11 @@
       <% @genres.each do |genre| %>
         <tr>
           <td><%= genre.name %></td>
-          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+          <td class="text-right"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+    </div>
+  </div>
 </div>
