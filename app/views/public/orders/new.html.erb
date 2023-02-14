@@ -1,6 +1,6 @@
 <%= form_with model: @order, url: orders_confirm_path, method: :post do |f| %>
 <div class="container">
-  <div class="row ml-5 mb-2">
+  <div class="row m-3">
     <h4 class="bg-light">注文情報入力</h4>
   </div>
   <div class="row h-auto mb-1">
@@ -9,7 +9,7 @@
     </div>
     <div class="pay_method ml-5">
       <p class="mb-0">
-        <%= f.radio_button :pay_method, Order.pay_methods.key(0) %>
+        <%= f.radio_button :pay_method, Order.pay_methods.key(0), checked: "checked" %>
         <%= f.label :pay_method_credit_card, Order.pay_methods_i18n[:credit_card] %>
       </p>
       <p>
