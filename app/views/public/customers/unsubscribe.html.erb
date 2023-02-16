@@ -9,6 +9,6 @@
   </p>
   <div>
     <%= link_to "退会しない", root_path, class:'btn btn-primary' %>
-    <%= link_to "退会する", withdraw_path, class:'btn btn-danger', method: :patch %>
+    <%= link_to "退会する", withdraw_path, class:'btn btn-danger', method: :patch, data: { confirm: "本当に退会されますか" } %>
   </div>
 </div>
