@@ -1,9 +1,11 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
+    <h4 class="bg-light m-5">会員一覧</h4>
+  </div>
+  <dev class="row">
     <div class="col-md-8 offset-md-1">
-      <h4 class="bg-light m-5">会員一覧</h4>
       <table class="table table-hover table-inverse">
-        <thead>
+        <thead class="thead-light">
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -25,6 +27,10 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 offset-md-5 align-self-center">
       <%= paginate @customers, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>

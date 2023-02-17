@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
-    <%= render 'genre', genres: @genres %>
-    <div class="col-md-10">
-      <div class="h2 font-weight-bold text-left">商品一覧(全<%= Item.count %>件)</div>
+    <div class="col-md-10 offset-1">
+      <div class="h2 font-weight-bold text-left my-5">商品一覧(全<%= Item.count %>件)</div>
       <div class="row">
         <div class="col">
           <% @items.each do |item| %>
